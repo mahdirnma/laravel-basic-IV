@@ -9,7 +9,7 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::with('category')->get();
+        $products = Product::with('category')->with('picture')->where('is_active',1)->get();
         return view('admin.product.index', compact('products'));
     }
 }

@@ -16,7 +16,10 @@ return new class extends Migration
             $table->string('title');
             $table->string('description');
             $table->bigInteger('price');
+//            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade')->onUpdate('cascade');
+//            $table->foreignId('category_id')->nullable()->constrained('categories')->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('category_id');
+            $table->boolean('entity')->default(true);
             $table->boolean('is_active')->default(true);
             $table->timestamps();
         });

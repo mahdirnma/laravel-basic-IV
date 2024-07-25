@@ -15,6 +15,7 @@
                     <tr class="h-12 border border-gray-400 border-b-2 border-b-gray-400">
                         <td class="text-center">حذف</td>
                         <td class="text-center">ویرایش</td>
+                        <td class="text-center">عکس محصول</td>
                         <td class="text-center">موجود</td>
                         <td class="text-center">قیمت</td>
                         <td class="text-center">توضیحات</td>
@@ -38,6 +39,7 @@
                                     <button type="submit" class="text-cyan-600">update</button>
                                 </form>
                             </td>
+                            <td class="text-center">{{$product->picture->main_picture}}</td>
                             <td class="text-center">{{$product->entity==1?"yes":"no"}}</td>
                             <td class="text-center">{{$product->price}}</td>
                             <td class="text-center">{{$product->description}}</td>
