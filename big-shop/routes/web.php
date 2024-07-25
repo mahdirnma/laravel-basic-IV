@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use App\Models\Category;
 use App\Models\Product;
@@ -21,3 +22,6 @@ Route::get('/login', [UserController::class, 'login'])->name('login.show');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::get('/signin', [UserController::class, 'signin'])->name('signin.show');
 Route::post('/signin', [AuthController::class, 'signin'])->name('signin');
+
+Route::get('/admin/product/index', [ProductController::class, 'index'])->name('product.index');
+
