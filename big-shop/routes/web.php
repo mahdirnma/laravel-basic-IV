@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use App\Models\Category;
@@ -23,12 +24,19 @@ Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::get('/signin', [UserController::class, 'signin'])->name('signin.show');
 Route::post('/signin', [AuthController::class, 'signin'])->name('signin');
 
-Route::get('/admin/product/index', [ProductController::class, 'index'])->name('product.index');
-Route::get('/admin/product/add', [ProductController::class, 'add'])->name('product.add');
-Route::post('/admin/product/create', [ProductController::class, 'create'])->name('product.create');
-Route::get('/admin/product/{product}/update', [ProductController::class, 'update'])->name('product.update');
-Route::put('/admin/product/{product}/edit', [ProductController::class, 'edit'])->name('product.edit');
-Route::get('/admin/product/{product}/delete', [ProductController::class, 'delete'])->name('product.delete');
-Route::delete('/admin/product/{product}/remove', [ProductController::class, 'remove'])->name('product.remove');
+Route::prefix('/admin')->group(function () {
+    Route::controller(ProductController::class)->group(function () {
+        Route::get('/product/index','index')->name('product.index');
+        Route::get('/product/add','add')->name('product.add');
+        Route::post('/product/create','create')->name('product.create');
+        Route::get('/product/{product}/update','update')->name('product.update');
+        Route::put('/product/{product}/edit','edit')->name('product.edit');
+        Route::get('/product/{product}/delete','delete')->name('product.delete');
+        Route::delete('/product/{product}/remove','remove')->name('product.remove');
+    });
+    Route::controller(CategoryController::class)->group(function () {
+        Route::get('/category/index','index')->name('category.index');
+    });
+});
 
 

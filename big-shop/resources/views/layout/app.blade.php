@@ -17,7 +17,7 @@
                 <ul class="flex flex-row-reverse">
                     <li class="w-32 h-full flex justify-center items-center font-mono text-balance"><a href="{{route('index')}}">داشبورد</a></li>
                     <li class="w-32 h-full flex justify-center items-center font-mono text-balance"><a href="{{route('product.index')}}">محصولات</a></li>
-                    <li class="w-32 h-full flex justify-center items-center font-mono text-balance"><a href="{{--{{route('category.index')}}--}}">دسته بندی</a></li>
+                    <li class="w-32 h-full flex justify-center items-center font-mono text-balance"><a href="{{route('category.index')}}">دسته بندی</a></li>
                 </ul>
             </nav>
         </div>
