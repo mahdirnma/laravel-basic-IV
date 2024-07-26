@@ -56,4 +56,42 @@ class ProductController extends Controller
         ]);
         return to_route('admin.product.index');
     }
+    public function update(Product $product)
+    {
+        if (!session()->has('user')) {
+            return to_route('login.show');
+        }
+        $categories = Category::all();
+//        $product2=$product->with('category')->with('picture');
+        return view('admin.product.update', compact('product','categories'));
+    }
+
+    public function edit(StoreProductRequest $request, Product $product)
+    {
+        if (!session()->has('user')) {
+            return to_route('login.show');
+        }
+        $title = $request->input('title');
+        $description = $request->input('description');
+        $price = $request->input('price');
+        $entity= $request->input('entity');
+        $category= $request->input('category');
+        $main_pic= $request->input('main_pic');
+        $pic1= $request->input('pic1');
+        $pic2= $request->input('pic2');
+
+        $product->update([
+            'title' => $title,
+            'description' => $description,
+            'price' => $price,
+            'entity' => $entity,
+            'category_id' => $category,
+        ]);
+        $product->picture()->update([
+            'main_picture' => $main_pic,
+            'picture_1' => $pic1,
+            'picture_2' => $pic2
+        ]);
+        return to_route('product.index');
+    }
 }

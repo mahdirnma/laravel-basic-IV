@@ -26,4 +26,7 @@ Route::post('/signin', [AuthController::class, 'signin'])->name('signin');
 Route::get('/admin/product/index', [ProductController::class, 'index'])->name('product.index');
 Route::get('/admin/product/add', [ProductController::class, 'add'])->name('product.add');
 Route::post('/admin/product/create', [ProductController::class, 'create'])->name('product.create');
+Route::get('/admin/product/{product}/update', [ProductController::class, 'update'])->name('product.update');
+Route::put('/admin/product/{product}/edit', [ProductController::class, 'edit'])->name('product.edit');
+
 
