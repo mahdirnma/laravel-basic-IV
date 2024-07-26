@@ -54,7 +54,7 @@ class ProductController extends Controller
             'picture_1' => $pic1,
             'picture_2' => $pic2
         ]);
-        return to_route('admin.product.index');
+        return to_route('product.index');
     }
     public function update(Product $product)
     {
@@ -91,6 +91,23 @@ class ProductController extends Controller
             'main_picture' => $main_pic,
             'picture_1' => $pic1,
             'picture_2' => $pic2
+        ]);
+        return to_route('product.index');
+    }
+
+    public function delete(Product $product)
+    {
+        if (!session()->has('user')) {
+            return to_route('login.show');
+        }
+        return view('admin.product.delete', compact('product'));
+    }
+    public function remove(Product $product){
+        if (!session()->has('user')) {
+            return to_route('login.show');
+        }
+        $product->update([
+            'is_active' => 0
         ]);
         return to_route('product.index');
     }

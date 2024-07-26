@@ -27,9 +27,8 @@
                     @foreach($products as $product)
                         <tr>
                             <td class="text-center">
-                                <form action="{{--{{route('product.delete',['product'=>$product->id])}}--}}" method="post">
+                                <form action="{{route('product.delete',['product'=>$product->id])}}" method="get">
                                     @csrf
-                                    @method('delete')
                                     <button type="submit" class="text-green-600">delete</button>
                                 </form>
                             </td>
