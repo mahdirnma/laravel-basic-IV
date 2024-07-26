@@ -36,6 +36,10 @@ Route::prefix('/admin')->group(function () {
     });
     Route::controller(CategoryController::class)->group(function () {
         Route::get('/category/index','index')->name('category.index');
+        Route::get('/category/add','add')->name('category.add');
+        Route::post('/category/create','create')->name('category.create');
+        Route::get('/category/{category}/update','update')->name('category.update');
+        Route::put('/category/{category}/edit','edit')->name('category.edit');
     });
 });
 
