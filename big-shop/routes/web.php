@@ -40,6 +40,8 @@ Route::prefix('/admin')->group(function () {
         Route::post('/category/create','create')->name('category.create');
         Route::get('/category/{category}/update','update')->name('category.update');
         Route::put('/category/{category}/edit','edit')->name('category.edit');
+        Route::get('/category/{category}/delete','delete')->name('category.delete');
+        Route::delete('/category/{category}/destroy','destroy')->name('category.destroy');
     });
 });
 

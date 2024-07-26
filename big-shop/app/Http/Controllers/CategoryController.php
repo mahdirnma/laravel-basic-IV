@@ -12,7 +12,7 @@ class CategoryController extends Controller
         if (!session()->has('user')) {
             return to_route('login.show');
         }
-        $categories = Category::all();
+        $categories = Category::all()->where('is_active',1);
         return view('admin.category.index',compact('categories'));
     }
 
@@ -63,6 +63,23 @@ class CategoryController extends Controller
             return to_route('category.index');
         }else{
             return to_route('category.update');
+        }
+    }
+    public function delete(Category $category){
+        if (!session()->has('user')) {
+            return to_route('login.show');
+        }
+        return view('admin.category.delete',compact('category'));
+    }
+    public function destroy(Category $category){
+        if (!session()->has('user')) {
+            return to_route('login.show');
+        }
+        $status = $category->update([
+            'is_active' => 0
+        ]);
+        if ($status) {
+            return to_route('category.index');
         }
     }
 }

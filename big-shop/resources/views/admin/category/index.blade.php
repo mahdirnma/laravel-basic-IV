@@ -23,7 +23,7 @@
                     @foreach($categories as $category)
                         <tr>
                             <td class="text-center">
-                                <form action="{{--{{route('product.delete',['product'=>$product->id])}}--}}" method="get">
+                                <form action="{{route('category.delete',compact('category'))}}" method="get">
                                     @csrf
                                     <button type="submit" class="text-green-600">delete</button>
                                 </form>
