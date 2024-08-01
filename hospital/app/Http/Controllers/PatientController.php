@@ -82,4 +82,25 @@ class PatientController extends Controller
             return to_route('patient.index');
         }
     }
+
+    public function delete(Patient $patient)
+    {
+        if (!session()->has('user')) {
+            return to_route('login.show');
+        }
+        return view('admin.patient.delete',compact('patient'));
+    }
+
+    public function destroy(Patient $patient)
+    {
+        if (!session()->has('user')) {
+            return to_route('login.show');
+        }
+        $status=$patient->update([
+            'is_active' => 0,
+        ]);
+        if($status){
+            return to_route('patient.index');
+        }
+    }
 }
