@@ -13,8 +13,8 @@ class UserController extends Controller
         if (!session()->has('user')) {
             return to_route('login.show');
         }
-        $hospital=Hospital::all()->count();
-        $patient=Patient::all()->count();
+        $hospital=Hospital::all()->where('is_active',1)->count();
+        $patient=Patient::all()->where('is_active',1)->count();
         return view('admin.index',compact('hospital','patient'));
     }
     public function login()

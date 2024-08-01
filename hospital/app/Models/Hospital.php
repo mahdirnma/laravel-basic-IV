@@ -9,7 +9,7 @@ class Hospital extends Model
 {
     use HasFactory;
     protected $fillable=[
-        'tile',
+        'title',
         'city',
         'zone',
         'address',
