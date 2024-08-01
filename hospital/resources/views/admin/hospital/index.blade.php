@@ -34,7 +34,7 @@
                                 </form>
                             </td>
                             <td class="text-center">
-                                <form action="{{--{{route('product.update',['product'=>$product->id])}}--}}" method="get">
+                                <form action="{{route('hospital.update',compact('hospital'))}}" method="get">
                                     @csrf
                                     <button type="submit" class="text-cyan-600">update</button>
                                 </form>
