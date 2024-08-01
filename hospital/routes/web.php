@@ -27,6 +27,8 @@ Route::prefix('/admin')->group(function () {
         Route::post('/hospital/create','create')->name('hospital.create');
         Route::get('/hospital/{hospital}/update','update')->name('hospital.update');
         Route::put('/hospital/{hospital}/edit','edit')->name('hospital.edit');
+        Route::get('/hospital/{hospital}/delete','delete')->name('hospital.delete');
+        Route::delete('/hospital/{hospital}/destroy','destroy')->name('hospital.destroy');
     });
 });
 

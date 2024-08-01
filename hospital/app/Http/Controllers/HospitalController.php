@@ -13,7 +13,7 @@ class HospitalController extends Controller
         if (!session()->has('user')) {
             return to_route('login.show');
         }
-        $hospitals = Hospital::all();
+        $hospitals = Hospital::all()->where('is_active',1);
         return view('admin.hospital.index', compact('hospitals'));
     }
 
@@ -80,6 +80,25 @@ class HospitalController extends Controller
         ]);
         if ($status) {
             return to_route('hospital.index');
+        }
+    }
+    public function delete(Hospital $hospital){
+        if (!session()->has('user')) {
+            return to_route('login.show');
+        }
+        return view('admin.hospital.delete', compact('hospital'));
+    }
+    public function destroy(Hospital $hospital){
+        if (!session()->has('user')) {
+            return to_route('login.show');
+        }
+        $status=$hospital->update([
+            'is_active'=>0
+        ]);
+        if ($status) {
+            return to_route('hospital.index');
+        }else{
+            return to_route('hospital.delete');
         }
     }
 }
