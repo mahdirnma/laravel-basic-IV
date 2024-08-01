@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HospitalController;
+use App\Http\Controllers\PatientController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -29,6 +30,9 @@ Route::prefix('/admin')->group(function () {
         Route::put('/hospital/{hospital}/edit','edit')->name('hospital.edit');
         Route::get('/hospital/{hospital}/delete','delete')->name('hospital.delete');
         Route::delete('/hospital/{hospital}/destroy','destroy')->name('hospital.destroy');
+    });
+    Route::controller(PatientController::class)->group(function () {
+        Route::get('/patient/index','index')->name('patient.index');
     });
 });
 
