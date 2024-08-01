@@ -48,4 +48,38 @@ class PatientController extends Controller
             return to_route('patient.index');
         }
     }
+
+    public function update(Patient $patient)
+    {
+        if (!session()->has('user')) {
+            return to_route('login.show');
+        }
+        $info=Information::all();
+        $hospitals = Hospital::all()->where('is_active',1);
+        return view('admin.patient.update',compact('patient','info','hospitals'));
+    }
+
+    public function edit(Patient $patient, StorePatientRequest $request)
+    {
+        if (!session()->has('user')) {
+            return to_route('login.show');
+        }
+        $name = $request->input('name');
+        $age = $request->input('age');
+        $gender = $request->input('gender');
+        $hospital = $request->input('hospital');
+        $information = $request->input('information');
+        $status=$patient->update([
+            'name' => $name,
+            'age' => $age,
+            'gender' => $gender,
+            'hospital_id' => $hospital,
+        ]);
+        $patient->information()->update([
+            'description' => $information,
+        ]);
+        if($status){
+            return to_route('patient.index');
+        }
+    }
 }

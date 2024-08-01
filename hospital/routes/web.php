@@ -35,6 +35,8 @@ Route::prefix('/admin')->group(function () {
         Route::get('/patient/index','index')->name('patient.index');
         Route::get('/patient/add','add')->name('patient.add');
         Route::post('/patient/create','create')->name('patient.create');
+        Route::get('/patient/{patient}/update','update')->name('patient.update');
+        Route::put('/patient/{patient}/edit','edit')->name('patient.edit');
     });
 });
 
