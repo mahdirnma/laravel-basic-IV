@@ -33,6 +33,8 @@ Route::prefix('/admin')->group(function () {
     });
     Route::controller(PatientController::class)->group(function () {
         Route::get('/patient/index','index')->name('patient.index');
+        Route::get('/patient/add','add')->name('patient.add');
+        Route::post('/patient/create','create')->name('patient.create');
     });
 });
 
