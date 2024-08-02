@@ -39,7 +39,7 @@
                                 </form>
                             </td>
                             <td class="text-center">
-                                <form action="{{--{{route('prescription.index',['prescription'=>$patient->prescriptions[0]->title]}}--}}" method="get">
+                                <form action="{{route('prescription.index',['prescription'=>$patient->id])}}" method="get">
                                     @csrf
                                     <button type="submit" class="text-red-700">prescription</button>
                                 </form>

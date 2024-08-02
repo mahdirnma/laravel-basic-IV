@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HospitalController;
 use App\Http\Controllers\PatientController;
+use App\Http\Controllers\PrescriptionController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -39,6 +40,11 @@ Route::prefix('/admin')->group(function () {
         Route::put('/patient/{patient}/edit','edit')->name('patient.edit');
         Route::get('/patient/{patient}/delete','delete')->name('patient.delete');
         Route::delete('/patient/{patient}/destroy','destroy')->name('patient.destroy');
+    });
+    Route::controller(PrescriptionController::class)->group(function () {
+        Route::get('/prescription/{prescription}/index','index')->name('prescription.index');
+        Route::get('/prescription/add','add')->name('prescription.add');
+        Route::post('/prescription/create','create')->name('prescription.create');
     });
 });
 
