@@ -20,5 +20,6 @@ Route::get('/login',[UserController::class,'login'])->name('login.show');
 Route::post('/login',[AuthController::class,'login'])->name('login');
 Route::get('/signin',[UserController::class,'signin'])->name('signin.show');
 Route::post('/signin',[AuthController::class,'signin'])->name('signin');
+Route::get('/logout',[AuthController::class,'logout'])->name('logout');
 
 

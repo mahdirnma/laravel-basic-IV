@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\School;
+use App\Models\Student;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -10,7 +12,9 @@ class UserController extends Controller
         if (!session()->has('user')) {
             return view('login');
         }
-        return view('admin.dashboard');
+        $schools=School::all()->where('is_active',1)->count();
+        $students=Student::all()->where('is_active',1)->count();
+        return view('admin.index',compact('schools','students'));
     }
 
     public function login()
