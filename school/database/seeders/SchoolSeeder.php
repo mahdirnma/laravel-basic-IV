@@ -15,13 +15,15 @@ class SchoolSeeder extends Seeder
     {
         School::create([
             'title' => 'jahad',
-            'address' => 'malayer',
+            'city' => 'malayer',
+            'address' => 'jahad',
             'telephone' => '08136644987',
             'type' => 'general',
         ]);
         School::create([
             'title' => 'nemune',
-            'address' => 'hamedan',
+            'city' => 'hamedan',
+            'address' => 'jolan',
             'telephone' => '08136634987',
             'type' => 'specialized',
         ]);

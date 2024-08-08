@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\SchoolController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,4 +23,7 @@ Route::get('/signin',[UserController::class,'signin'])->name('signin.show');
 Route::post('/signin',[AuthController::class,'signin'])->name('signin');
 Route::get('/logout',[AuthController::class,'logout'])->name('logout');
 
+Route::get('/admin/school/index',[SchoolController::class,'index'])->name('school.index');
+Route::get('/admin/school/add',[SchoolController::class,'add'])->name('school.add');
+Route::post('/admin/school/create',[SchoolController::class,'create'])->name('school.create');
 

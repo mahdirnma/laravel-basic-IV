@@ -16,7 +16,7 @@
             <nav>
                 <ul class="flex flex-row-reverse">
                     <li class="w-44 h-full flex justify-center items-center font-mono text-balance"><a href="{{route('index')}}">داشبورد</a></li>
-                    <li class="w-44 h-full flex justify-center items-center font-mono text-balance"><a href="{{--{{route('hospital.index')}}--}}">مدرسه ها</a></li>
+                    <li class="w-44 h-full flex justify-center items-center font-mono text-balance"><a href="{{route('school.index')}}">مدرسه ها</a></li>
                     <li class="w-44 h-full flex justify-center items-center font-mono text-balance"><a href="{{--{{route('patient.index')}}--}}">دانش آموزان</a></li>
                 </ul>
             </nav>
