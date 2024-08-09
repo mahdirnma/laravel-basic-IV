@@ -26,7 +26,7 @@
                     @foreach($schools as $school)
                         <tr>
                             <td class="text-center">
-                                <form action="{{--{{route('hospital.delete',compact('hospital'))}}--}}" method="get">
+                                <form action="{{route('school.delete',compact('school'))}}" method="get">
                                     @csrf
                                     <button type="submit" class="text-green-600">delete</button>
                                 </form>

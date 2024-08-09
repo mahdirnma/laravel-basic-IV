@@ -73,4 +73,21 @@ class SchoolController extends Controller
             return to_route('school.index');
         }
     }
+    public function delete(School $school){
+        if (!session()->has('user')) {
+            return to_route('login.show');
+        }
+        return view('admin.school.delete',compact('school'));
+    }
+    public function destroy(School $school){
+        if (!session()->has('user')) {
+            return to_route('login.show');
+        }
+        $status=$school->update([
+            'is_active'=>0
+        ]);
+        if($status){
+            return to_route('school.index');
+        }
+    }
 }

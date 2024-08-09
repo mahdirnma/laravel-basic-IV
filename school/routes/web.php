@@ -30,6 +30,8 @@ Route::prefix('/admin')->group(function(){
         Route::post('/school/create','create')->name('school.create');
         Route::get('/school/{school}/update','update')->name('school.update');
         Route::put('/school/{school}/edit','edit')->name('school.edit');
+        Route::get('/school/{school}/delete','delete')->name('school.delete');
+        Route::delete('/school/{school}/destroy','destroy')->name('school.destroy');
     });
 });
 
