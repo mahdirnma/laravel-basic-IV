@@ -15,10 +15,22 @@ class GradeSheetSeeder extends Seeder
     {
         GradeSheet::create([
             'average' => '15',
+            'grade' => '2',
             'student_id' => '2',
         ]);
         GradeSheet::create([
             'average' => '19',
+            'grade' => '3',
+            'student_id' => '1',
+        ]);
+        GradeSheet::create([
+            'average' => '19.5',
+            'grade' => '2',
+            'student_id' => '1',
+        ]);
+        GradeSheet::create([
+            'average' => '20',
+            'grade' => '1',
             'student_id' => '1',
         ]);
 

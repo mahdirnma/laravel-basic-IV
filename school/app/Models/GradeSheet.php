@@ -10,6 +10,7 @@ class GradeSheet extends Model
     use HasFactory;
     protected $fillable=[
         'average',
+        'grade',
         'student_id',
         'is_active',
     ];
