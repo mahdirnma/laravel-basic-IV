@@ -23,7 +23,13 @@ Route::get('/signin',[UserController::class,'signin'])->name('signin.show');
 Route::post('/signin',[AuthController::class,'signin'])->name('signin');
 Route::get('/logout',[AuthController::class,'logout'])->name('logout');
 
-Route::get('/admin/school/index',[SchoolController::class,'index'])->name('school.index');
-Route::get('/admin/school/add',[SchoolController::class,'add'])->name('school.add');
-Route::post('/admin/school/create',[SchoolController::class,'create'])->name('school.create');
+Route::prefix('/admin')->group(function(){
+    Route::controller(SchoolController::class)->group(function(){
+        Route::get('/school/index','index')->name('school.index');
+        Route::get('/school/add','add')->name('school.add');
+        Route::post('/school/create','create')->name('school.create');
+        Route::get('/school/{school}/update','update')->name('school.update');
+        Route::put('/school/{school}/edit','edit')->name('school.edit');
+    });
+});
 
