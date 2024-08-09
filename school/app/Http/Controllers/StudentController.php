@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreStudentRequest;
+use App\Models\School;
 use App\Models\Student;
 use Illuminate\Http\Request;
 
@@ -13,5 +15,38 @@ class StudentController extends Controller
         }
         $students = Student::with('school')->where('is_active',1)->orderBy('id','desc')->get();
         return view('admin.student.index',compact('students'));
+    }
+
+    public function add()
+    {
+        if (!session()->has('user')) {
+            return to_route('login.show');
+        }
+        $schools = School::where('is_active',1)->get();
+        return view('admin.student.add',compact('schools'));
+    }
+
+    public function create(StoreStudentRequest $request)
+    {
+        if (!session()->has('user')) {
+            return to_route('login.show');
+        }
+        $firstname=$request->input('firstname');
+        $lastname=$request->input('lastname');
+        $age=$request->input('age');
+        $address=$request->input('address');
+        $gender=$request->input('gender');
+        $school_id=$request->input('school');
+        $student = Student::create([
+            'firstname'=>$firstname,
+            'lastname'=>$lastname,
+            'age'=>$age,
+            'address'=>$address,
+            'gender'=>$gender,
+            'school_id'=>$school_id,
+        ]);
+        if($student){
+            return to_route('student.index');
+        }
     }
 }

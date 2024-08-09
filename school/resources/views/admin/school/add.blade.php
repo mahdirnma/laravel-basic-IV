@@ -50,7 +50,7 @@
                                 <option value="specialized">specialized</option>
                             </select>
                             @if($errors->has('type'))
-                                <p class="text-red-700">{{$errors->first('range')}}</p>
+                                <p class="text-red-700">{{$errors->first('type')}}</p>
                             @endif
                         </div>
                     </div>

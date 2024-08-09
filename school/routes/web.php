@@ -36,6 +36,8 @@ Route::prefix('/admin')->group(function(){
     });
     Route::controller(StudentController::class)->group(function(){
         Route::get('/student/index','index')->name('student.index');
+        Route::get('/student/add','add')->name('student.add');
+        Route::post('/student/create','create')->name('student.create');
     });
 });
 
