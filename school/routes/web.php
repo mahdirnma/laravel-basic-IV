@@ -40,6 +40,8 @@ Route::prefix('/admin')->group(function(){
         Route::post('/student/create','create')->name('student.create');
         Route::get('/student/{student}/update','update')->name('student.update');
         Route::put('/student/{student}/edit','edit')->name('student.edit');
+        Route::get('/student/{student}/delete','delete')->name('student.delete');
+        Route::delete('/student/{student}/destroy','destroy')->name('student.destroy');
     });
 });
 
