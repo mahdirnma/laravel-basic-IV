@@ -38,6 +38,8 @@ Route::prefix('/admin')->group(function(){
         Route::get('/student/index','index')->name('student.index');
         Route::get('/student/add','add')->name('student.add');
         Route::post('/student/create','create')->name('student.create');
+        Route::get('/student/{student}/update','update')->name('student.update');
+        Route::put('/student/{student}/edit','edit')->name('student.edit');
     });
 });
 

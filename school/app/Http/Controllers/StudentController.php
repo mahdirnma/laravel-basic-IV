@@ -49,4 +49,37 @@ class StudentController extends Controller
             return to_route('student.index');
         }
     }
+
+    public function update(Student $student)
+    {
+        if (!session()->has('user')) {
+            return to_route('login.show');
+        }
+        $schools=School::all();
+        return view('admin.student.update',compact('student','schools'));
+    }
+
+    public function edit(Student $student,StoreStudentRequest $request)
+    {
+        if (!session()->has('user')) {
+            return to_route('login.show');
+        }
+        $firstname=$request->input('firstname');
+        $lastname=$request->input('lastname');
+        $age=$request->input('age');
+        $address=$request->input('address');
+        $gender=$request->input('gender');
+        $school_id=$request->input('school');
+        $status=$student->update([
+            'firstname'=>$firstname,
+            'lastname'=>$lastname,
+            'age'=>$age,
+            'address'=>$address,
+            'gender'=>$gender,
+            'school_id'=>$school_id,
+        ]);
+        if($status){
+            return to_route('student.index');
+        }
+    }
 }
