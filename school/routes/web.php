@@ -46,6 +46,8 @@ Route::prefix('/admin')->group(function(){
     });
     Route::controller(GradeSheetController::class)->group(function(){
         Route::get('/gradeSheet/{student}/index','index')->name('gradeSheet.index');
+        Route::get('/gradeSheet/{student}/add','add')->name('gradeSheet.add');
+        Route::post('/gradeSheet/{student}/create','create')->name('gradeSheet.create');
     });
 });
 
