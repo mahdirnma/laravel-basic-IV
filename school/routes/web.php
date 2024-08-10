@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\FileController;
 use App\Http\Controllers\GradeSheetController;
 use App\Http\Controllers\SchoolController;
 use App\Http\Controllers\StudentController;
@@ -48,6 +49,9 @@ Route::prefix('/admin')->group(function(){
         Route::get('/gradeSheet/{student}/index','index')->name('gradeSheet.index');
         Route::get('/gradeSheet/{student}/add','add')->name('gradeSheet.add');
         Route::post('/gradeSheet/{student}/create','create')->name('gradeSheet.create');
+    });
+    Route::controller(FileController::class)->group(function(){
+        Route::get('/file/{student}/index','index')->name('file.index');
     });
 });
 

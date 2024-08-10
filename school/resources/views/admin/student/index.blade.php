@@ -15,6 +15,7 @@
                     <tr class="h-12 border border-gray-400 border-b-2 border-b-gray-400">
                         <td class="text-center">حذف</td>
                         <td class="text-center">ویرایش</td>
+                        <td class="text-center">پرونده</td>
                         <td class="text-center">مشاهده کارنامه ها</td>
                         <td class="text-center">نام مدرسه</td>
                         <td class="text-center">آدرس</td>
@@ -37,6 +38,12 @@
                                 <form action="{{route('student.update',compact('student'))}}" method="get">
                                     @csrf
                                     <button type="submit" class="text-cyan-600">update</button>
+                                </form>
+                            </td>
+                            <td class="text-center">
+                                <form action="{{route('file.index',compact('student'))}}" method="get">
+                                    @csrf
+                                    <button type="submit" class="text-emerald-700">file</button>
                                 </form>
                             </td>
                             <td class="text-center">
