@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\GradeSheetController;
 use App\Http\Controllers\SchoolController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UserController;
@@ -42,6 +43,9 @@ Route::prefix('/admin')->group(function(){
         Route::put('/student/{student}/edit','edit')->name('student.edit');
         Route::get('/student/{student}/delete','delete')->name('student.delete');
         Route::delete('/student/{student}/destroy','destroy')->name('student.destroy');
+    });
+    Route::controller(GradeSheetController::class)->group(function(){
+        Route::get('/gradeSheet/{student}/index','index')->name('gradeSheet.index');
     });
 });
 
