@@ -27,15 +27,16 @@ class AuthController extends Controller
         $username=$request->input('username');
         $password=$request->input('password');
         $repeat_password=$request->input('repeat_password');
-        if ($password==$repeat_password)
+        if ($password==$repeat_password){
             $user=User::create([
                 'name'=>$name,
                 'username'=>$username,
                 'password'=>$password
             ]);
-        if ($user){
-            session()->put('user',true);
+            if ($user)
+                session()->put('user',true);
             return to_route('index');
+
         }else{
             return to_route('signin.show');
         }

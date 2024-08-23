@@ -25,7 +25,7 @@ class StoreSchoolRequest extends FormRequest
             'title' => 'required',
             'city' => 'required',
             'address' => 'required',
-            'telephone' => 'required|min:11|max:11'/*|numeric*/,
+            'telephone' => 'required|min_digits:11|max_digits:11|numeric'/*|numeric*/,
             'type' => 'required',
         ];
     }
