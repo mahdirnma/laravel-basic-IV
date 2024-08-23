@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -23,11 +24,20 @@ Route::get('/signin', [UserController::class,'signin'])->name('signin.show');
 Route::post('/signin', [AuthController::class,'signin'])->name('signin');
 Route::get('/logout', [AuthController::class,'logout'])->name('logout');
 
-Route::get('/admin/product', [ProductController::class, 'index'])->name('product.index');
-Route::get('/admin/product/create', [ProductController::class, 'create'])->name('product.create');
-Route::post('/admin/product/store', [ProductController::class, 'store'])->name('product.store');
-Route::get('/admin/product/{product}/edit', [ProductController::class, 'edit'])->name('product.edit');
-Route::put('/admin/product/{product}/update', [ProductController::class, 'update'])->name('product.update');
-Route::get('/admin/product/{product}/delete', [ProductController::class, 'delete'])->name('product.delete');
-Route::delete('/admin/product/{product}/destroy', [ProductController::class, 'destroy'])->name('product.destroy');
+Route::prefix('/admin')->group(function () {
+    Route::controller(ProductController::class)->group(function () {
+        Route::get('/product',  'index')->name('product.index');
+        Route::get('/product/create', 'create')->name('product.create');
+        Route::post('/product/store','store')->name('product.store');
+        Route::get('/product/{product}/edit', 'edit')->name('product.edit');
+        Route::put('/product/{product}/update','update')->name('product.update');
+        Route::get('/product/{product}/delete','delete')->name('product.delete');
+        Route::delete('/product/{product}/destroy', 'destroy')->name('product.destroy');
+    });
+    Route::controller(CategoryController::class)->group(function () {
+        Route::get('/category',  'index')->name('category.index');
+        Route::get('/category/create', 'create')->name('category.create');
+        Route::post('/category/store','store')->name('category.store');
+    });
+});
 
