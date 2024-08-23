@@ -19,7 +19,7 @@ class ProductController extends Controller
             return redirect('login');
         }
         /*$products = Product::with('category')->get();*/
-        $products = Product::all();
+        $products = Product::all()->where('is_active',1);
         return view('admin.product.index', compact('products'));
     }
     public function create()
@@ -88,11 +88,24 @@ class ProductController extends Controller
         }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+    public function delete(Product $product)
+    {
+        if (!session('user')){
+            return redirect('login');
+        }
+        return view('admin.product.delete', compact('product'));
+    }
+
     public function destroy(Product $product)
     {
-        //
+        if (!session('user')){
+            return redirect('login');
+        }
+        $status=$product->update([
+            'is_active'=>0
+        ]);
+        if ($status){
+            return to_route('product.index');
+        }
     }
 }

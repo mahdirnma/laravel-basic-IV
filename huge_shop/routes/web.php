@@ -28,4 +28,6 @@ Route::get('/admin/product/create', [ProductController::class, 'create'])->name(
 Route::post('/admin/product/store', [ProductController::class, 'store'])->name('product.store');
 Route::get('/admin/product/{product}/edit', [ProductController::class, 'edit'])->name('product.edit');
 Route::put('/admin/product/{product}/update', [ProductController::class, 'update'])->name('product.update');
+Route::get('/admin/product/{product}/delete', [ProductController::class, 'delete'])->name('product.delete');
+Route::delete('/admin/product/{product}/destroy', [ProductController::class, 'destroy'])->name('product.destroy');
 
