@@ -57,25 +57,35 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Product $product)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Product $product)
     {
-        //
+        if (!session('user')){
+            return redirect('login');
+        }
+        $categories=Category::all();
+        return view('admin.product.update', compact('product','categories'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(UpdateProductRequest $request, Product $product)
     {
-        //
+        if (!session('user')){
+            return redirect('login');
+        }
+        $title=$request->input('title');
+        $description=$request->input('description');
+        $price=$request->input('price');
+        $entity=$request->input('entity');
+        $category=$request->input('category');
+        $status=$product->update([
+            'title'=>$title,
+            'description'=>$description,
+            'price'=>$price,
+            'entity'=>$entity,
+            'category_id'=>$category,
+        ]);
+        if ($status){
+            return to_route('product.index');
+        }
     }
 
     /**

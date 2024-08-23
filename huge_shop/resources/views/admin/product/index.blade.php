@@ -33,7 +33,7 @@
                                 </form>
                             </td>
                             <td class="text-center">
-                                <form action="{{--{{route('student.update',compact('student'))}}--}}" method="get">
+                                <form action="{{route('product.edit',compact('product'))}}" method="get">
                                     @csrf
                                     <button type="submit" class="text-cyan-600">update</button>
                                 </form>
@@ -44,7 +44,7 @@
                                 @endforeach
                             </td>
                             <td class="text-center">{{$product->category->title}}</td>
-                            <td class="text-center">{{$product->entity}}</td>
+                            <td class="text-center">{{$product->entity==1?'yes':'no'}}</td>
                             <td class="text-center">{{number_format($product->price)}}</td>
                             <td class="text-center">{{$product->description}}</td>
                             <td class="text-center">{{$product->title}}</td>

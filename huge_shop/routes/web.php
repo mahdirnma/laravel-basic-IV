@@ -26,4 +26,6 @@ Route::get('/logout', [AuthController::class,'logout'])->name('logout');
 Route::get('/admin/product', [ProductController::class, 'index'])->name('product.index');
 Route::get('/admin/product/create', [ProductController::class, 'create'])->name('product.create');
 Route::post('/admin/product/store', [ProductController::class, 'store'])->name('product.store');
+Route::get('/admin/product/{product}/edit', [ProductController::class, 'edit'])->name('product.edit');
+Route::put('/admin/product/{product}/update', [ProductController::class, 'update'])->name('product.update');
 
