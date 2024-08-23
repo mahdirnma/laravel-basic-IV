@@ -39,4 +39,8 @@ class AuthController extends Controller
             return to_route('login.show');
         }
     }
+    public function logout(){
+        session()->forget('user');
+        return view('login');
+    }
 }

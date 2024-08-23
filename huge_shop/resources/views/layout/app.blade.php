@@ -16,12 +16,12 @@
             <nav>
                 <ul class="flex flex-row-reverse">
                     <li class="w-44 h-full flex justify-center items-center font-mono text-balance"><a href="{{route('dashboard')}}">داشبورد</a></li>
-                    <li class="w-44 h-full flex justify-center items-center font-mono text-balance"><a href="{{--{{route('school.index')}}--}}">محصولات</a></li>
+                    <li class="w-44 h-full flex justify-center items-center font-mono text-balance"><a href="{{route('product.index')}}">محصولات</a></li>
                     <li class="w-44 h-full flex justify-center items-center font-mono text-balance"><a href="{{--{{route('student.index')}}--}}">دسته بندی</a></li>
                 </ul>
             </nav>
         </div>
-        <a href="{{--{{route('logout')}}--}}" class="text-red-700 font-bold"><- logout</a>
+        <a href="{{route('logout')}}" class="text-red-700 font-bold"><- logout</a>
     </div>
     @yield('content')
 </div>
