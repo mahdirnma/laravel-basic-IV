@@ -35,4 +35,43 @@ class CategoryController extends Controller
             return to_route('category.index');
         }
     }
+    public function edit(Category $category){
+        if (!session('user')){
+            return redirect('login');
+        }
+        return view('admin.category.update',compact('category'));
+    }
+    public function update(StoreCategoryRequest $request,Category $category){
+        if (!session('user')){
+            return redirect('login');
+        }
+        $title = $request->input('title');
+        $description = $request->input('description');
+        $status=$category->update([
+            'title'=>$title,
+            'description'=>$description,
+        ]);
+        if($status){
+            return to_route('category.index');
+        }
+    }
+
+    public function delete(Category $category)
+    {
+        if (!session('user')){
+            return redirect('login');
+        }
+        return view('admin.category.delete',compact('category'));
+    }
+    public function destroy(Category $category){
+        if (!session('user')){
+            return redirect('login');
+        }
+        $status=$category->update([
+            'is_active'=>0,
+        ]);
+        if($status){
+            return to_route('category.index');
+        }
+    }
 }

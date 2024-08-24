@@ -23,13 +23,13 @@
                     @foreach($categories as $category)
                         <tr>
                             <td class="text-center">
-                                <form action="{{--{{route('product.delete',compact('product'))}}--}}" method="get">
+                                <form action="{{route('category.delete',compact('category'))}}" method="get">
                                     @csrf
                                     <button type="submit" class="text-green-600">delete</button>
                                 </form>
                             </td>
                             <td class="text-center">
-                                <form action="{{--{{route('product.edit',compact('product'))}}--}}" method="get">
+                                <form action="{{route('category.edit',compact('category'))}}" method="get">
                                     @csrf
                                     <button type="submit" class="text-cyan-600">update</button>
                                 </form>
