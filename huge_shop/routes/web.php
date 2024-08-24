@@ -50,6 +50,8 @@ Route::prefix('/admin')->group(function () {
         Route::post('/tag/store','store')->name('tag.store');
         Route::get('/tag/{tag}/edit', 'edit')->name('tag.edit');
         Route::put('/tag/{tag}/update','update')->name('tag.update');
+        Route::get('/tag/{tag}/delete','delete')->name('tag.delete');
+        Route::delete('/tag/{tag}/destroy', 'destroy')->name('tag.destroy');
     });
 });
 

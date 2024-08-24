@@ -16,7 +16,7 @@ class TagController extends Controller
         if (!session()->has('user')) {
             return redirect('login');
         }
-        $tags = Tag::all();
+        $tags = Tag::all()->where('is_active', 1);
         return view('admin.tag.index', compact('tags'));
     }
 
@@ -39,6 +39,8 @@ class TagController extends Controller
         ]);
         if ($tag) {
             return to_route('tag.index');
+        }else{
+            return to_route('tag.create');
         }
     }
 
@@ -61,11 +63,31 @@ class TagController extends Controller
         ]);
         if ($status) {
             return to_route('tag.index');
+        }else{
+            return to_route('tag.edit', $tag);
+
         }
     }
 
+    public function delete(Tag $tag)
+    {
+        if (!session()->has('user')) {
+            return redirect('login');
+        }
+        return view('admin.tag.delete', compact('tag'));
+    }
     public function destroy(Tag $tag)
     {
-        //
+        if (!session()->has('user')) {
+            return redirect('login');
+        }
+        $status=$tag->update([
+            'is_active'=>0,
+        ]);
+        if ($status) {
+            return to_route('tag.index');
+        }else{
+            return to_route('tag.delete', $tag);
+        }
     }
 }

@@ -33,6 +33,9 @@ class CategoryController extends Controller
         ]);
         if($category){
             return to_route('category.index');
+        }else{
+            return to_route('category.create');
+
         }
     }
     public function edit(Category $category){
@@ -53,6 +56,8 @@ class CategoryController extends Controller
         ]);
         if($status){
             return to_route('category.index');
+        }else{
+            return to_route('category.edit',$category);
         }
     }
 
@@ -72,6 +77,8 @@ class CategoryController extends Controller
         ]);
         if($status){
             return to_route('category.index');
+        }else{
+            return to_route('category.delete',$category);
         }
     }
 }

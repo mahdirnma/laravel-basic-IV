@@ -50,13 +50,14 @@ class ProductController extends Controller
             'entity'=>$entity,
             'category_id'=>$category,
         ]);
-        $product->tags()->attach($tags);
-        return to_route('product.index');
+        $status=$product->tags()->attach($tags);
+        if ($status){
+            return to_route('product.index');
+        }else{
+            return to_route('product.create');
+        }
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function edit(Product $product)
     {
         if (!session('user')){
@@ -85,6 +86,8 @@ class ProductController extends Controller
         ]);
         if ($status){
             return to_route('product.index');
+        }else{
+            return to_route('product.edit',$product);
         }
     }
 
@@ -106,6 +109,8 @@ class ProductController extends Controller
         ]);
         if ($status){
             return to_route('product.index');
+        }else{
+            return to_route('product.delete',$product);
         }
     }
 }
