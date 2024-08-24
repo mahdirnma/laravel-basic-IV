@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\TagController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -42,6 +43,13 @@ Route::prefix('/admin')->group(function () {
         Route::put('/category/{category}/update','update')->name('category.update');
         Route::get('/category/{category}/delete','delete')->name('category.delete');
         Route::delete('/category/{category}/destroy', 'destroy')->name('category.destroy');
+    });
+    Route::controller(TagController::class)->group(function () {
+        Route::get('/tag',  'index')->name('tag.index');
+        Route::get('/tag/create', 'create')->name('tag.create');
+        Route::post('/tag/store','store')->name('tag.store');
+        Route::get('/tag/{tag}/edit', 'edit')->name('tag.edit');
+        Route::put('/tag/{tag}/update','update')->name('tag.update');
     });
 });
 

@@ -13,52 +13,57 @@ class TagController extends Controller
      */
     public function index()
     {
-        //
+        if (!session()->has('user')) {
+            return redirect('login');
+        }
+        $tags = Tag::all();
+        return view('admin.tag.index', compact('tags'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        if (!session()->has('user')) {
+            return redirect('login');
+        }
+        return view('admin.tag.add');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(StoreTagRequest $request)
     {
-        //
+        if (!session()->has('user')) {
+            return redirect('login');
+        }
+        $title=$request->input('title');
+        $tag=Tag::create([
+            'title'=>$title,
+        ]);
+        if ($tag) {
+            return to_route('tag.index');
+        }
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Tag $tag)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Tag $tag)
     {
-        //
+        if (!session()->has('user')) {
+            return redirect('login');
+        }
+        return view('admin.tag.update', compact('tag'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateTagRequest $request, Tag $tag)
+    public function update(StoreTagRequest $request, Tag $tag)
     {
-        //
+        if (!session()->has('user')) {
+            return redirect('login');
+        }
+        $title=$request->input('title');
+        $status=$tag->update([
+            'title'=>$title,
+        ]);
+        if ($status) {
+            return to_route('tag.index');
+        }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Tag $tag)
     {
         //

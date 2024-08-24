@@ -18,6 +18,7 @@
                     <li class="w-44 h-full flex justify-center items-center font-mono text-balance"><a href="{{route('dashboard')}}">داشبورد</a></li>
                     <li class="w-44 h-full flex justify-center items-center font-mono text-balance"><a href="{{route('product.index')}}">محصولات</a></li>
                     <li class="w-44 h-full flex justify-center items-center font-mono text-balance"><a href="{{route('category.index')}}">دسته بندی</a></li>
+                    <li class="w-44 h-full flex justify-center items-center font-mono text-balance"><a href="{{route('tag.index')}}">تگ ها</a></li>
                 </ul>
             </nav>
         </div>
