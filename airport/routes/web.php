@@ -26,9 +26,9 @@ Route::prefix('/admin')->group(function () {
     });
     Route::controller(ClientController::class)->group(function () {
         Route::get('/client/index','index')->name('client.index');
-/*        Route::get('/client/create','create')->name('client.create');
+        Route::get('/client/create','create')->name('client.create');
         Route::post('/client/store','store')->name('client.store');
-        Route::get('/client/{client}/update','update')->name('client.update');
-        Route::put('/client/{client}/edit','edit')->name('client.edit');*/
+//        Route::get('/client/{client}/update','update')->name('client.update');
+//        Route::put('/client/{client}/edit','edit')->name('client.edit');
     });
 });

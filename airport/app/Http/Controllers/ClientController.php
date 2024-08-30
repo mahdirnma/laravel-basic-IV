@@ -16,26 +16,24 @@ class ClientController extends Controller
         $clients = Client::all();
         return view('admin.client.index', compact('clients'));
     }
-
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        return view('admin.client.add');
     }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(StoreClientRequest $request)
     {
-        //
+        $name = $request->input('name');
+        $gender = $request->input('gender');
+        $birth_year = $request->input('birth_year');
+        $client=Client::create([
+            'name' => $name,
+            'gender' => $gender,
+            'birth_year' => $birth_year,
+        ]);
+        if($client){
+            return to_route('client.index');
+        }
     }
-
-    /**
-     * Display the specified resource.
-     */
     public function show(Client $client)
     {
         //
