@@ -24,7 +24,7 @@
                     @foreach($clients as $client)
                         <tr>
                             <td class="text-center">
-                                <form action="{{--{{route('airplane.update',compact('airplane'))}}--}}" method="get">
+                                <form action="{{route('client.update',compact('client'))}}" method="get">
                                     @csrf
                                     <button type="submit" class="text-cyan-600">update</button>
                                 </form>
