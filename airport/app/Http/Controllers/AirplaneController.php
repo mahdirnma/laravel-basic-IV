@@ -17,29 +17,28 @@ class AirplaneController extends Controller
     }
     public function index()
     {
-        //
+        $airplanes = Airplane::all();
+        return view('admin.airplane.index',compact('airplanes'));
     }
-
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        return view('admin.airplane.add');
     }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(StoreAirplaneRequest $request)
     {
-        //
+        $flight_code = $request->input('flight_code');
+        $capacity = $request->input('capacity');
+        $type = $request->input('type');
+        $airplane = Airplane::create([
+            'flight_code' => $flight_code,
+            'capacity' => $capacity,
+            'type' => $type,
+        ]);
+        if($airplane){
+            return to_route('airplane.index');
+        }
     }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Airplane $airplain)
+    public function show(Airplane $airplane)
     {
         //
     }
@@ -47,7 +46,7 @@ class AirplaneController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Airplane $airplain)
+    public function edit(Airplane $airplane)
     {
         //
     }
@@ -55,7 +54,7 @@ class AirplaneController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateAirplaneRequest $request, Airplane $airplain)
+    public function update(UpdateAirplaneRequest $request, Airplane $airplane)
     {
         //
     }
@@ -63,7 +62,7 @@ class AirplaneController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Airplane $airplain)
+    public function destroy(Airplane $airplane)
     {
         //
     }

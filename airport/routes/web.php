@@ -16,3 +16,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [AirplaneController::class,'dashboard'])->name('dashboard');
+Route::get('/admin/airplane/index', [AirplaneController::class,'index'])->name('airplane.index');
+Route::get('/admin/airplane/create', [AirplaneController::class,'create'])->name('airplane.create');
+Route::post('/admin/airplane/store', [AirplaneController::class,'store'])->name('airplane.store');
