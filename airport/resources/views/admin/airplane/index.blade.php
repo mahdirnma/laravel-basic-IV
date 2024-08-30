@@ -23,7 +23,7 @@
                     @foreach($airplanes as $airplane)
                         <tr>
                             <td class="text-center">
-                                <form action="{{--{{route('product.edit',compact('product'))}}--}}" method="get">
+                                <form action="{{route('airplane.update',compact('airplane'))}}" method="get">
                                     @csrf
                                     <button type="submit" class="text-cyan-600">update</button>
                                 </form>

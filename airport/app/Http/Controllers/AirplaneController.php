@@ -38,32 +38,20 @@ class AirplaneController extends Controller
             return to_route('airplane.index');
         }
     }
-    public function show(Airplane $airplane)
+    public function update(Airplane $airplane)
     {
-        //
+        return view('admin.airplane.update',compact('airplane'));
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Airplane $airplane)
+    public function edit(StoreAirplaneRequest $request, Airplane $airplane)
     {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateAirplaneRequest $request, Airplane $airplane)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Airplane $airplane)
-    {
-        //
+        $flight_code = $request->input('flight_code');
+        $capacity = $request->input('capacity');
+        $type = $request->input('type');
+        $airplane->update([
+            'flight_code' => $flight_code,
+            'capacity' => $capacity,
+            'type' => $type,
+        ]);
+        return to_route('airplane.index');
     }
 }
