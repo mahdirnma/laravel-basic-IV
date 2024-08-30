@@ -16,8 +16,8 @@
             <nav>
                 <ul class="flex flex-row-reverse">
                     <li class="w-44 h-full flex justify-center items-center font-mono text-balance"><a href="{{route('dashboard')}}">داشبورد</a></li>
-                    <li class="w-44 h-full flex justify-center items-center font-mono text-balance"><a href="{{route('airplane.index')}}">مشترکین</a></li>
-                    <li class="w-44 h-full flex justify-center items-center font-mono text-balance"><a href="{{--{{route('category.index')}}--}}">هواپیماها</a></li>
+                    <li class="w-44 h-full flex justify-center items-center font-mono text-balance"><a href="{{route('client.index')}}">مشترکین</a></li>
+                    <li class="w-44 h-full flex justify-center items-center font-mono text-balance"><a href="{{route('airplane.index')}}">هواپیماها</a></li>
                     <li class="w-44 h-full flex justify-center items-center font-mono text-balance"><a href="{{--{{route('tag.index')}}--}}">بلیط ها</a></li>
                 </ul>
             </nav>
