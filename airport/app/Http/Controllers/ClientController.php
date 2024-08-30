@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreTicketRequest;
+use App\Models\Airplane;
 use App\Models\Client;
 use App\Http\Requests\StoreClientRequest;
 use App\Http\Requests\UpdateClientRequest;
@@ -54,5 +56,20 @@ class ClientController extends Controller
     public function ticket(Client $client)
     {
         return view('admin.ticket.index', compact('client'));
+    }
+    public function ticket_create(Client $client)
+    {
+        $airplanes = Airplane::all();
+        return view('admin.ticket.add', compact('client', 'airplanes'));
+    }
+
+    public function ticket_store(Client $client,StoreTicketRequest $request)
+    {
+        $flight_time = $request->input('flight_time');
+        $seat_number = $request->input('seat_number');
+        $line=$request->input('line');
+        $airplane=$request->input('airplane');
+        $client->airplanes()->attach($airplane,['flight_time'=>$flight_time,'seat_number'=>$seat_number,'line'=>$line]);
+        return to_route('ticket.index', compact('client'));
     }
 }
