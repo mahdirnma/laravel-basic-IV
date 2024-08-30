@@ -51,11 +51,8 @@ class ClientController extends Controller
         return to_route('client.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Client $client)
+    public function ticket(Client $client)
     {
-        //
+        return view('admin.ticket.index', compact('client'));
     }
 }

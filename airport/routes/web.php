@@ -30,5 +30,7 @@ Route::prefix('/admin')->group(function () {
         Route::post('/client/store','store')->name('client.store');
         Route::get('/client/{client}/update','update')->name('client.update');
         Route::put('/client/{client}/edit','edit')->name('client.edit');
+        Route::get('/ticket/{client}/index','ticket')->name('ticket.index');
+
     });
 });

@@ -30,7 +30,7 @@
                                 </form>
                             </td>
                             <td class="text-center">
-                                <form action="{{--{{route('airplane.update',compact('airplane'))}}--}}" method="get">
+                                <form action="{{route('ticket.index',compact('client'))}}" method="get">
                                     @csrf
                                     <button type="submit" class="text-amber-600">بلیط ها</button>
                                 </form>
